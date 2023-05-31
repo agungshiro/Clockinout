@@ -1,0 +1,11 @@
+ERROR - 2023-05-20 13:27:24 --> Severity: error --> Exception: Unable to locate the model you have specified: Restaurants_model /Applications/MAMP/htdocs/Clockinout/system/core/Loader.php 348
+ERROR - 2023-05-20 13:30:21 --> Query error: Table 'clockinout.restaurants' doesn't exist - Invalid query: 
+            SELECT SQL_CALC_FOUND_ROWS *
+            FROM restaurants
+            WHERE deleted = '0'
+         ORDER BY name asc LIMIT 0, 10
+ERROR - 2023-05-20 13:33:52 --> Query error: Unknown column 'deleted' in 'where clause' - Invalid query: 
+            SELECT SQL_CALC_FOUND_ROWS *
+            FROM restaurants
+            WHERE deleted = '0'
+         ORDER BY name asc LIMIT 0, 10
