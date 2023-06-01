@@ -232,10 +232,13 @@ class Scheduling extends Admin_Controller {
             $this->cek_input_post($post,$id,$periods['total_hours']);
         }
 
+        $begin = new DateTime($periods['start_period'].' 00:00:00');
+        $end = new DateTime($periods['end_period'].' 00:00:00');
+        $end = $end->modify('+1 day');
         $period = new DatePeriod (
-            new DateTime($periods['start_period'].' 00:00:00'),
+            $begin,
             new DateInterval('P1D'),
-            new DateTime($periods['end_period'].' 00:00:00')
+            $end
         );
 
         // Brake Periode Range into several date
@@ -497,6 +500,7 @@ class Scheduling extends Admin_Controller {
         $close = strtotime($restaurant['close_hour']);
         $shift = strtotime($restaurant['shift_hour']);
         $total_seconds = $period['total_hours']*3600;
+        $base_add_time = 5 * 60; // Base 5 minute early 
                      
         // Everything in second           
         $max = $close - $open;
@@ -506,6 +510,8 @@ class Scheduling extends Admin_Controller {
 
         $mod = NULL;
         $numb_days = count($dayoffs);
+        $all_base_add_time = $base_add_time * $numb_days * 2;
+        $max_week = $max * $numb_days;
         $total = 0;
 
         // Total counting
@@ -518,31 +524,42 @@ class Scheduling extends Admin_Controller {
             }
         }
 
+        
+
         // Find diff
         $diff = $total_seconds - $total; 
-        $diff_rate = floor($diff/($numb_days*2));
+        $allow_rand = $diff - $all_base_add_time;
+        $diff_rate = floor($allow_rand/($numb_days*2));
 
         $i = 0;
         foreach($dayoffs as $dof) {
             $mod[$i] = $dof;
 
+            $rand1 = rand(0,$diff_rate);
+
             // Clock in
             if($dof['type'] == 'full_day' || $dof['type'] == '1st_shift') {
-                $clockin = strtotime($restaurant['open_hour']) - $diff_rate;
+                $clockin = strtotime($restaurant['open_hour']) - ($base_add_time + $rand1);
             } elseif ($dof['type'] == '2nd_shift') {
-                $clockin = strtotime($restaurant['shift_hour']) - $diff_rate;
+                $clockin = strtotime($restaurant['shift_hour']) - ($base_add_time + $rand1);
             } else {
                 $clockin = 0;
             }
+
+            $allow_rand = $allow_rand - $rand1;
+
+            $rand2 = rand(0,$diff_rate);
             
             // Clock out
             if($dof['type'] == 'full_day' || $dof['type'] == '2nd_shift') {
-                $clockout = strtotime($restaurant['close_hour']) + $diff_rate;
+                $clockout = strtotime($restaurant['close_hour']) + $base_add_time + $rand2;
             } elseif ($dof['type'] == '1st_shift') {
-                $clockout = strtotime($restaurant['shift_hour']) + $diff_rate;
+                $clockout = strtotime($restaurant['shift_hour']) + $base_add_time + $rand2;
             } else {
                 $clockout = 0;
             }
+
+            $allow_rand = $allow_rand - $rand2;
 
             $duration = $clockout - $clockin;
             $h = floor($duration/3600);
