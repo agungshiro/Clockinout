@@ -489,17 +489,24 @@ class Scheduling extends Admin_Controller {
         exit;
     }
 
+    /**
+     * Print randomize clock in and out 
+     */
     function print($id=NULL) {
-
+        
+        // Get necessary data from database
         $period = $this->scheduling_model->get_period($id);
         $dayoffs = $this->scheduling_model->get_day_off_print($id);
         $employee = $this->employee_model->get_employee($period['id_employee']);
         $restaurant = $this->restaurants_model->get_restaurant($employee['id_restourant']);
 
+        // Get time parameter from database and convert to seconds
         $open = strtotime($restaurant['open_hour']);
         $close = strtotime($restaurant['close_hour']);
         $shift = strtotime($restaurant['shift_hour']);
-        $total_seconds = $period['total_hours']*3600;
+
+        // Total working our of the employee, from the database
+        $employee_hours = $period['total_hours']*3600;
         $base_add_time = 5 * 60; // Base 5 minute early 
                      
         // Everything in second           
@@ -524,12 +531,10 @@ class Scheduling extends Admin_Controller {
             }
         }
 
-        
-
         // Find diff
-        $diff = $total_seconds - $total; 
+        $diff = $employee_hours - $total; 
         $allow_rand = $diff - $all_base_add_time;
-        $diff_rate = floor($allow_rand/($numb_days*2));
+        $diff_rate = $allow_rand/($numb_days*2);
 
         $i = 0;
         foreach($dayoffs as $dof) {
@@ -564,10 +569,10 @@ class Scheduling extends Admin_Controller {
             $duration = $clockout - $clockin;
             $h = floor($duration/3600);
             $min = floor(($duration%3600)/60);
-
+            $sec = floor(($duration%3600)%60);
             $mod[$i]['clockin'] = date('H:i:s',$clockin);
             $mod[$i]['clockout'] = date('H:i:s',$clockout);
-            $mod[$i]['duration'] = $h.' hrs : '.$min.' min';
+            $mod[$i]['duration'] = $h.' h : '.$min.' m : '.$sec.' s';
             $i++;
         }
 

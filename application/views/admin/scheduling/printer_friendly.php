@@ -12,15 +12,15 @@
 <div>Name : <?php echo($name); ?></div><br>
 
 <?php foreach($dayoffs as $do): ?>
-    <div>---------------------------------------</div><br>
+    <div>---------------------------------------</div>
     <?php if ($do['type'] == 'off'): ?>
         <div><?php echo($do['day'].' : '.str_replace('_',' ',$do['type'])); ?></div>
-        <div>Total Time : <?php echo($do['duration']); ?></div><br>
+        <div>Total Time : <?php echo($do['duration']); ?></div>
     <?php else: ?>
         <div><?php echo($do['day'].' : '.str_replace('_',' ',$do['type'])); ?></div>
         <div><span>Clock in</span> :  <?php echo($do['clockin']); ?></div>
         <div><span>Clock out</span> :  <?php echo($do['clockout']); ?></div>
-        <div><span>Total Time</span> : <?php echo($do['duration']); ?></div><br>
+        <div><span>Total Time</span> : <?php echo($do['duration']); ?></div>
     <?php endif; ?>
 <?php endforeach; ?>
 <div>---------------------------------------</div><br>
