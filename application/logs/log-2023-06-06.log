@@ -1,0 +1,237 @@
+ERROR - 2023-06-06 04:26:17 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-06 04:26:31 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-06 07:13:51 --> Could not find the language line "scheduling error scheduling_not_exist"
+ERROR - 2023-06-06 07:14:13 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:14:37 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:14:37 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:14:37 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:14:48 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:14:48 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '
+                    '2023-06-04',
+                    '2023-06-10',
+           ' at line 9 - Invalid query: 
+                INSERT INTO period (
+                    id_employee,
+                    start_period,
+                    end_period,
+                    regular_hour,
+                    overtime,
+                    total_hours
+                ) VALUES (
+                    ,
+                    '2023-06-04',
+                    '2023-06-10',
+                    45.6,
+                    5.12,
+                    50.72
+                )
+            
+ERROR - 2023-06-06 07:26:10 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:27:02 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:27:17 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:27:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:27:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:27:26 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:27:26 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO period (
+                    id_employee,
+                    start_period,
+                    end_period,
+                    regular_hour,
+                    overtime,
+                    total_hours
+                ) VALUES (
+                    NULL,
+                    '2023-06-04',
+                    '2023-06-10',
+                    45.6,
+                    5.12,
+                    50.72
+                )
+            
+ERROR - 2023-06-06 07:28:39 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:28:41 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:28:53 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:28:53 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:28:53 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:29:01 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:29:01 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 276
+ERROR - 2023-06-06 07:29:01 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 07:30:33 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:30:54 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:30:54 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:30:54 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:31:05 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:31:05 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 278
+ERROR - 2023-06-06 07:31:05 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 07:43:24 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:43:34 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:43:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:43:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 07:43:43 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 07:43:43 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 278
+ERROR - 2023-06-06 07:43:43 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 07:44:49 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:45:49 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:45:49 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:45:49 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:45:57 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:45:57 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 279
+ERROR - 2023-06-06 08:45:57 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 08:48:30 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:48:48 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:48:48 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:48:48 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:49:00 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:49:00 --> Severity: Warning --> count(): Parameter must be an array or an object that implements Countable /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 279
+ERROR - 2023-06-06 08:49:00 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 08:50:08 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:50:17 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:50:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:50:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:50:26 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:50:26 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 08:50:49 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:50:58 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:50:58 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:50:58 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:51:09 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:51:09 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 08:52:22 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:52:34 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:52:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:52:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:52:42 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:52:42 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            
+ERROR - 2023-06-06 08:54:30 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:54:42 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:54:42 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:54:42 --> Could not find the language line "contact input created"
+ERROR - 2023-06-06 08:54:49 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-06 08:54:49 --> Query error: Column 'id_employee' cannot be null - Invalid query: 
+                INSERT INTO day_off (
+                    id_employee,
+                    id_period,
+                    day,
+                    type,
+                    duration
+                ) VALUES (
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL,
+                    NULL
+                )
+            

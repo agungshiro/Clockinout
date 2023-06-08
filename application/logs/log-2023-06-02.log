@@ -1,0 +1,79 @@
+ERROR - 2023-06-02 00:42:19 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-02 00:46:11 --> Severity: Warning --> include(/Applications/MAMP/htdocs/Clockinout/system/language/english/import_lang.php): failed to open stream: No such file or directory /Applications/MAMP/htdocs/Clockinout/application/core/MY_Lang.php 112
+ERROR - 2023-06-02 00:46:11 --> Severity: Warning --> include(): Failed opening '/Applications/MAMP/htdocs/Clockinout/system/language/english/import_lang.php' for inclusion (include_path='.:/Applications/MAMP/bin/php/php7.4.33/lib/php') /Applications/MAMP/htdocs/Clockinout/application/core/MY_Lang.php 112
+ERROR - 2023-06-02 00:46:11 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 00:46:50 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 00:57:36 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:34:33 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:34:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:35:35 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:00 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:33 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:34 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:36 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:37:55 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:18 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:38:37 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:37 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:38:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:38 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:38:40 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:40 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:38:44 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:38:44 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:39:05 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:39:05 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:39:07 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:39:07 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:39:14 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:39:14 --> Could not find the language line "core button upload"
+ERROR - 2023-06-02 02:39:34 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:40:06 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:40:07 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:40:23 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:40:39 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 02:41:31 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:40:08 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:40:15 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:42:43 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:42:51 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:42:59 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:43:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:43:44 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:44:12 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:44:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:44:25 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:44:46 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:44:53 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:45:02 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:45:31 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:45:32 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:46:06 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:47:28 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:47:36 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:47:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 05:47:41 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:24:46 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:24:53 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:26:44 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:43:25 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:43:39 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:45:57 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:46:30 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:58:14 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:58:16 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 17:58:24 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:00:15 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:00:15 --> Severity: error --> Exception: Call to undefined function file_is_uploaded() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 87
+ERROR - 2023-06-02 18:01:05 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:01:07 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:01:13 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:01:13 --> Severity: error --> Exception: Call to undefined function file_is_uploaded() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 87
+ERROR - 2023-06-02 18:01:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:01:25 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:01:27 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:03:04 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:03:06 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-02 18:03:12 --> Language file contains no data: language/english/import_lang.php

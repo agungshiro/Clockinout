@@ -55,6 +55,7 @@
                     </li>
                     <li class="<?php echo (uri_string() == 'admin/restaurants') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/restaurants'); ?>">Restaurants</a></li>
                     <li class="<?php echo (uri_string() == 'admin/employee') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/employee'); ?>">Employee</a></li>
+                    <li class="<?php echo (uri_string() == 'admin/import') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/import'); ?>">Import</a></li>
                     <li class="<?php echo (uri_string() == 'admin/settings') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/settings'); ?>"><?php echo lang('admin button settings'); ?></a></li>
                 </ul>
                 <?php // Nav bar right ?>

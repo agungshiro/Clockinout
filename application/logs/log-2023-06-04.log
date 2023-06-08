@@ -1,0 +1,156 @@
+ERROR - 2023-06-04 01:37:42 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:37:57 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:37:57 --> Severity: error --> Exception: Call to a member function get_tob_list() on null /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php 92
+ERROR - 2023-06-04 01:38:24 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:38:36 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:38:36 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:38:36 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:38:47 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:40:24 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:40:34 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:40:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:40:34 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:40:46 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:41:03 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:46:24 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:46:30 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:46:48 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:46:48 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:46:48 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:47:00 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:47:07 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:47:56 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:47:56 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:47:56 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:48:06 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:48:33 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:48:39 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:48:51 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:48:51 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:48:51 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:48:59 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:58:15 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:58:21 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:58:32 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:58:33 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:58:33 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:58:42 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:59:21 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:59:31 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:59:31 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:59:31 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 01:59:39 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 01:59:57 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:12:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:12:30 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:12:30 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:12:30 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:12:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:12:38 --> Severity: Warning --> A non-numeric value encountered /Applications/MAMP/htdocs/Clockinout/application/models/Import_model.php 123
+ERROR - 2023-06-04 02:12:38 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5.12
+                )' at line 1 - Invalid query: 5.12
+                )
+            
+ERROR - 2023-06-04 02:13:23 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:13:32 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:13:32 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:13:32 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:13:40 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:13:40 --> Severity: Warning --> A non-numeric value encountered /Applications/MAMP/htdocs/Clockinout/application/models/Import_model.php 123
+ERROR - 2023-06-04 02:13:40 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5.12
+                )' at line 1 - Invalid query: 5.12
+                )
+            
+ERROR - 2023-06-04 02:15:31 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:15:42 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:15:42 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:15:42 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:15:50 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:15:50 --> Severity: Warning --> A non-numeric value encountered /Applications/MAMP/htdocs/Clockinout/application/models/Import_model.php 123
+ERROR - 2023-06-04 02:15:50 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5.12
+                )' at line 1 - Invalid query: 5.12
+                )
+            
+ERROR - 2023-06-04 02:16:15 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:16:51 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:16:51 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:16:51 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:16:59 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:16:59 --> Severity: Warning --> A non-numeric value encountered /Applications/MAMP/htdocs/Clockinout/application/models/Import_model.php 123
+ERROR - 2023-06-04 02:16:59 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5.12
+                )' at line 1 - Invalid query: 5.12
+                )
+            
+ERROR - 2023-06-04 02:18:02 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:18:10 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:18:10 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:18:10 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:18:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:18:18 --> Severity: Warning --> A non-numeric value encountered /Applications/MAMP/htdocs/Clockinout/application/models/Import_model.php 123
+ERROR - 2023-06-04 02:18:18 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '5.12
+                )' at line 1 - Invalid query: 5.12
+                )
+            
+ERROR - 2023-06-04 02:21:20 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:21:29 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:21:29 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:21:29 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:21:37 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:21:37 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''2023-06-04',
+                    '2023-06-10',
+                    '45.6',
+    ' at line 10 - Invalid query: 
+                INSERT INTO period (
+                    id_employee,
+                    start_period,
+                    end_period,
+                    regular_hour,
+                    overtime,
+                    total_hours
+                ) VALUES (
+                    59
+                    '2023-06-04',
+                    '2023-06-10',
+                    '45.6',
+                    '5.12',
+                    50.72
+                )
+            
+ERROR - 2023-06-04 02:22:29 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:22:50 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:22:58 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:22:58 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:22:58 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:23:06 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:41:40 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:41:56 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:41:56 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:41:56 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 02:42:18 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 02:42:20 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php:197) /Applications/MAMP/htdocs/Clockinout/system/helpers/url_helper.php 564
+ERROR - 2023-06-04 03:34:10 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:34:48 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:35:00 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:35:01 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 03:35:01 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 03:35:23 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:35:23 --> Severity: Warning --> Cannot modify header information - headers already sent by (output started at /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Import.php:197) /Applications/MAMP/htdocs/Clockinout/system/helpers/url_helper.php 564
+ERROR - 2023-06-04 03:35:37 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:35:45 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-04 03:40:05 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:40:17 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:40:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 03:40:17 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 03:40:35 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 03:40:49 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-04 03:44:38 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 04:42:16 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-04 04:42:34 --> Could not find the language line "users title user_delete"
+ERROR - 2023-06-04 04:43:08 --> Could not find the language line "employee title user_edit"
+ERROR - 2023-06-04 15:55:09 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 16:04:11 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 19:08:36 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 19:08:46 --> Language file contains no data: language/english/import_lang.php
+ERROR - 2023-06-04 19:08:46 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 19:08:46 --> Could not find the language line "contact input created"
+ERROR - 2023-06-04 19:09:31 --> Language file contains no data: language/english/import_lang.php

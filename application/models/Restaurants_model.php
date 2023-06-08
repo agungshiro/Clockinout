@@ -6,6 +6,7 @@ class Restaurants_model extends CI_Model {
      * @vars
      */
     private $_db;
+    private $_tob_db;
 
 
     /**
@@ -17,6 +18,7 @@ class Restaurants_model extends CI_Model {
 
         // define primary table
         $this->_db = 'restaurants';
+        $this->_tob_db = 'typeofjobs';
     }
 
 
@@ -88,6 +90,27 @@ class Restaurants_model extends CI_Model {
                 FROM {$this->_db}
                 WHERE id = " . $this->db->escape($id) . "
                     AND deleted = '0'
+            ";
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows())
+            {
+                return $query->row_array();
+            }
+        }
+
+        return FALSE;
+    }
+
+    function get_tob($id=NULL)
+    {
+        if ($id)
+        {
+            $sql = "
+                SELECT *
+                FROM {$this->_tob_db}
+                WHERE id = " . $this->db->escape($id) . "
             ";
 
             $query = $this->db->query($sql);
