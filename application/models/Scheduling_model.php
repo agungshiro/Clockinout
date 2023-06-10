@@ -147,6 +147,10 @@ class Scheduling_model extends CI_Model {
 
         return FALSE;
     }
+
+    function get_day_off_by_date($date) {
+        
+    }
     
 
 

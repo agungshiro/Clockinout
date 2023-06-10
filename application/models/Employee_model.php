@@ -74,7 +74,7 @@ class Employee_model extends CI_Model {
         return $results;
     }
 
-    function get_all_by_restaurant($id, $limit=0, $offset=0, $filters=array(), $sort='last_name', $dir='ASC') 
+    function get_all_by_restaurant($id, $limit=0, $offset=0, $filters=array(), $sort='name', $dir='ASC') 
     {
         $sql = "
             SELECT SQL_CALC_FOUND_ROWS {$this->_db}.*, {$this->_resto_db}.name AS restaurant

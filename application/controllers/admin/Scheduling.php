@@ -592,6 +592,69 @@ class Scheduling extends Admin_Controller {
         $this->load->view('admin/scheduling/printer_friendly',$content_data);
     }
 
+    function print_reports() {
+        $id_resto = $this->input->post('id_restaurant');
+        $start_period = $this->input->post('start_period');
+        $end_period = $this->input->post('end_period');
+
+        $begin = new DateTime($start_period.' 00:00:00');
+        $end = new DateTime($end_period.' 00:00:00');
+        $end = $end->modify('+1 day');
+        $period = new DatePeriod (
+            $begin,
+            new DateInterval('P1D'),
+            $end
+        );
+
+        // Brake Periode Range into several date
+        foreach($period as $key=>$val){
+            $periods_array[] = $val->format('Y-m-d');
+        }
+
+        $restaurant = $this->restaurants_model->get_restaurant($id_resto);
+
+        // Get time parameter from database and convert to seconds
+        $open = strtotime($restaurant['open_hour']);
+        $close = strtotime($restaurant['close_hour']);
+        $shift = strtotime($restaurant['shift_hour']);
+                     
+        // Everything in second           
+        $max = $close - $open;
+        $shift1 = $shift - $open;
+        $shift2 = $close - $shift;
+        $max_week = $max * 7;
+
+        $mod = NULL;
+        //$numb_days = count($dayoffs);
+        $numb_days = 7; // assume per week
+        $all_base_add_time = $base_add_time * $numb_days * 2;
+        $max_week = $max * $numb_days;
+        $total = 0;
+
+        $employees = $this->employee_model->get_all_by_restaurant($id_resto);
+
+        $index = 0;
+        $em_array = array();
+        foreach ($employees as $em_k => $em_v) {
+            $em_array[$index]['name'] = $em_v['name'];
+            $em_array[$index]['dayoffs'] = array();
+            $y = 0;
+            foreach($periods_array as $p) {
+                $d_o = $this->scheduling_model->get_day_off_by_date($p);
+                $em_array[$index]['dayoffs'][$y]['date'] = $p; 
+            }
+        }
+
+        $print_data = array(
+            'resto_name' => $restaurant['name'],
+            'resto_address' => $restaurant['address'],
+            'resto_phone' => $restaurant['phone'],
+            'resto_email' => $restaurant['email']
+        );
+        
+        $this->load->view('admin/scheduling/bulk_print',$content_data);
+    }
+
 
     /**************************************************************************************
      * PRIVATE VALIDATION CALLBACK FUNCTIONS

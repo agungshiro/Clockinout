@@ -3,12 +3,40 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <div class="row">
-            <div class="col-md-6 text-left">
+            <div class="col-md-2 text-left">
                 <h3 class="panel-title">List of Employee</h3>
             </div>
-            <div class="col-md-6 text-right">
+            <?php if(isset($id_restaurant)): ?>
+            <?php echo (form_open('admin/scheduling/print_reports')); ?>
+            <?php echo (form_hidden('id_restaurant', $id_restaurant)); ?>
+            <div class="col-md-8 text-right">
+                <div class="row text-rigth">
+                    <div class="col-md-3 text-right">   
+                        <div class="input-group date" data-date="<?php echo date('Y-m-d'); ?>" data-date-format="yyyy-mm-dd">
+                            <?php echo form_input(array('name'=>'start_period', 'id'=>'created', 'class'=>'form-control input-sm', 'readonly'=>'readonly', 'placeholder'=>lang('contact input created'), 'value'=>set_value('created', ((isset($filters['created'])) ? $filters['created'] : '')))); ?>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 text-right">
+                        <div class="input-group date" data-date="<?php echo date('Y-m-d'); ?>" data-date-format="yyyy-mm-dd">
+                            <?php echo form_input(array('name'=>'end_period', 'id'=>'created', 'class'=>'form-control input-sm', 'readonly'=>'readonly', 'placeholder'=>lang('contact input created'), 'value'=>set_value('created', ((isset($filters['created'])) ? $filters['created'] : '')))); ?>
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2 text-right">
+                        <button type="submit" name="submit" value="print_report" class="btn btn-success btn-sm tooltips" data-toggle="tooltip" title="Print Report"><span class="glyphicon glyphicon-print"></span> Print Report</button>
+                    </div>
+                </div>
+            </div>
+            <?php echo (form_close()); ?>
+            <div class="col-md-2 text-right">
                 <a class="btn btn-success tooltips" href="<?php echo base_url('admin/employee/add'); ?>" title="Add new employee" data-toggle="tooltip"><span class="glyphicon glyphicon-plus-sign"></span> Add new employee</a>
             </div>
+            <?php else: ?>
+                <div class="col-md-10 text-right">
+                    <a class="btn btn-success tooltips" href="<?php echo base_url('admin/employee/add'); ?>" title="Add new employee" data-toggle="tooltip"><span class="glyphicon glyphicon-plus-sign"></span> Add new employee</a>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 

@@ -245,7 +245,8 @@ class Import  extends Admin_Controller {
 
         if(floor($hours_in_second/($shift_rate_duration*14)) < 1) {
             $in = floor($hours_in_second/$shift_rate_duration);
-            $a1 = array_fill(0,7,0);
+            $off = 7 - $in;
+            $a1 = array_fill(0,$off,0);
             $a2 = array_fill(0,$in,1);
             $a3 = array_merge($a1,$a2);
             shuffle($a3);
@@ -259,7 +260,6 @@ class Import  extends Admin_Controller {
             shuffle($a3);
         }
 
-        
 
         $begin = new DateTime($param['start_period'].' 00:00:00');
         $end = new DateTime($param['end_period'].' 00:00:00');
@@ -270,7 +270,6 @@ class Import  extends Admin_Controller {
             $end
         );
 
-        
         // Brake Periode Range into several date
         foreach($period as $key=>$val){
             $p[] = $val->format('Y-m-d');
@@ -285,29 +284,32 @@ class Import  extends Admin_Controller {
             $reg = rand(1,2);
             if($reg == 1) {
                 $d = $shift1;
-                $t = 'shift_1';
+                $t = '1st_shift';
             } else {
                 $d = $shift2;
-                $t = 'shift_2';
+                $t = '2nd_shift';
             }
 
             switch($a3[$x]) {
                 case 0:
                     $inser_data['type'] = 'off';
                     $inser_data['duration'] = 0;
+                    break;
                 
                 case 1:
                     $inser_data['type'] = $t;
                     $inser_data['duration'] = $d;
-
+                    break;
 
                 case 2:
                     $inser_data['type'] = 'full_day' ;
                     $inser_data['duration'] = $max;
+                    break;
             }
 
-            print_r($a3);
-            exit;
+            //print_r($in);
+            //print_r($a3);
+            //exit;
 
             //print_r($inser_data);
 

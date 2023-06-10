@@ -111,6 +111,8 @@ class Employee extends Admin_Controller {
 
         // setup page header data
 		$this
+            ->add_css_theme('bootstrap-datepicker.css')
+            ->add_js_theme('bootstrap-datepicker.js')
 			->add_js_theme('employee.js', TRUE )
 			->set_title(lang('employee title employee_list'));
 
@@ -197,6 +199,8 @@ class Employee extends Admin_Controller {
 
         // setup page header data
 		$this
+            ->add_css_theme('bootstrap-datepicker.css')
+            ->add_js_theme('bootstrap-datepicker.js')
 			->add_js_theme('employee.js', TRUE )
 			->set_title($restaurant['name']);
 
@@ -213,7 +217,8 @@ class Employee extends Admin_Controller {
             'limit'      => $limit,
             'offset'     => $offset,
             'sort'       => $sort,
-            'dir'        => $dir
+            'dir'        => $dir,
+            'id_restaurant' => $id
         );
 
         // load views
