@@ -148,8 +148,25 @@ class Scheduling_model extends CI_Model {
         return FALSE;
     }
 
-    function get_day_off_by_date($date) {
-        
+    function get_day_off_by_date($day, $id_employee) {
+        if ($id_employee)
+        {
+            $sql = "
+                SELECT {$this->_day_off_db}.*
+                FROM {$this->_day_off_db}
+                WHERE {$this->_day_off_db}.id_employee = " . $this->db->escape($id_employee) . " 
+                AND {$this->_day_off_db}.day = " . $this->db->escape($day). "
+            ";
+
+            $query = $this->db->query($sql);
+
+            if ($query->num_rows())
+            {
+                return $query->row_array();
+            }
+        }
+
+        return FALSE;
     }
     
 

@@ -593,10 +593,15 @@ class Scheduling extends Admin_Controller {
     }
 
     function print_reports() {
+
+        // Get ID Restaurant
+        // Get Start Period that need to print
+        // Get End Period that need to print
         $id_resto = $this->input->post('id_restaurant');
         $start_period = $this->input->post('start_period');
         $end_period = $this->input->post('end_period');
 
+        // Get Time interval based on start and end period
         $begin = new DateTime($start_period.' 00:00:00');
         $end = new DateTime($end_period.' 00:00:00');
         $end = $end->modify('+1 day');
@@ -606,18 +611,23 @@ class Scheduling extends Admin_Controller {
             $end
         );
 
-        // Brake Periode Range into several date
+        // Put the interva into an array called periods_array
         foreach($period as $key=>$val){
             $periods_array[] = $val->format('Y-m-d');
         }
 
+        // Get RESTAURANT for the Profile and open, close, and shift hour
         $restaurant = $this->restaurants_model->get_restaurant($id_resto);
 
         // Get time parameter from database and convert to seconds
         $open = strtotime($restaurant['open_hour']);
         $close = strtotime($restaurant['close_hour']);
         $shift = strtotime($restaurant['shift_hour']);
-                     
+        
+        // Get maximum duration
+        // Get 1st shift duration
+        // Get 2nd shift duration
+        // Get 1 week duration 
         // Everything in second           
         $max = $close - $open;
         $shift1 = $shift - $open;
@@ -625,34 +635,117 @@ class Scheduling extends Admin_Controller {
         $max_week = $max * 7;
 
         $mod = NULL;
+        $base_add_time = 5 * 60; // Base 5 minute early 
         //$numb_days = count($dayoffs);
         $numb_days = 7; // assume per week
         $all_base_add_time = $base_add_time * $numb_days * 2;
         $max_week = $max * $numb_days;
         $total = 0;
 
+        // Get All Employees in a restaurant
         $employees = $this->employee_model->get_all_by_restaurant($id_resto);
 
+        // Iterate to each employee in a restaurant
         $index = 0;
+        // Array to keep the final data
         $em_array = array();
-        foreach ($employees as $em_k => $em_v) {
+        foreach ($employees['results'] as $em_v) {
+
+            //print_r($em_v);
+            // Set name for final data
             $em_array[$index]['name'] = $em_v['name'];
+
+            // Set list of dayoffs/Schedule per week into 2nd level of array
             $em_array[$index]['dayoffs'] = array();
             $y = 0;
+
+            // Iterate to each day based on the periods_array
             foreach($periods_array as $p) {
-                $d_o = $this->scheduling_model->get_day_off_by_date($p);
+                // Remember this var should be zero on each itteration
+                $total = 0;
+                
+                // for each day get the dayoff from the database, according to date  and employee ID
+                $d_o = $this->scheduling_model->get_day_off_by_date($p,$em_v['id']);
+                //echo('<pre>');
+                //print_r($d_o);
+                //echo('</pre>');
+                // Set the date to final data
                 $em_array[$index]['dayoffs'][$y]['date'] = $p; 
+                // set the type of final data
+                $em_array[$index]['dayoffs'][$y]['type'] = $d_o['type']; 
+
+                // My period id
+                // Gel all dayoffs from a period
+                $mydayoffs = $this->scheduling_model->get_day_off_print($d_o['id_period']);
+                // Get period information to achieve total hours of the periods
+                $myperiods = $this->scheduling_model->get_period($d_o['id_period']);
+
+                // Total counting
+                // Calculate the true hours based of shift duration in seconds
+                foreach($mydayoffs as $key => $val) {
+                    foreach($val as $k=>$v){
+                        if($v == 'full_day') {$total += $max;}
+                        elseif($v == '1st_shift') {$total += $shift1;}
+                        elseif($v == '2nd_shift') {$total += $shift2;}
+                        else{$total += 0;}
+                    }
+                }
+                
+                // Calc total hours in seconds
+                $employee_hours = $myperiods['total_hours'] * 3600;
+
+                // Find diff
+                $diff = $employee_hours - $total; 
+                $allow_rand = $diff - $all_base_add_time;
+                $diff_rate = $allow_rand/($numb_days*2);
+
+                $rand1 = rand(0,$diff_rate);
+
+                if($d_o['type'] == 'full_day' || $d_o['type'] == '1st_shift') {
+                    $clockin = strtotime($restaurant['open_hour']) - ($base_add_time + $rand1);
+                } elseif ($d_o['type'] == '2nd_shift') {
+                    $clockin = strtotime($restaurant['shift_hour']) - ($base_add_time + $rand1);
+                } else {
+                    $clockin = 0;
+                }
+    
+                $allow_rand = $allow_rand - $rand1;
+    
+                $rand2 = rand(0,$diff_rate);
+                
+                // Clock out
+                if($d_o['type'] == 'full_day' || $d_o['type'] == '2nd_shift') {
+                    $clockout = strtotime($restaurant['close_hour']) + $base_add_time + $rand2;
+                } elseif ($d_o['type'] == '1st_shift') {
+                    $clockout = strtotime($restaurant['shift_hour']) + $base_add_time + $rand2;
+                } else {
+                    $clockout = 0;
+                }
+
+                $allow_rand = $allow_rand - $rand2;
+                $duration = $clockout - $clockin;
+                $h = floor($duration/3600);
+                $min = floor(($duration%3600)/60);
+                $sec = floor(($duration%3600)%60);
+                
+                $em_array[$index]['dayoffs'][$y]['clockin'] = date('H:i:s',$clockin);
+                $em_array[$index]['dayoffs'][$y]['clockout'] = date('H:i:s',$clockout); 
+                $em_array[$index]['dayoffs'][$y]['duration'] = $h.' h : '.$min.' m : '.$sec.' s'; 
+
+                $y++;
             }
+            $index++;
         }
 
         $print_data = array(
             'resto_name' => $restaurant['name'],
             'resto_address' => $restaurant['address'],
             'resto_phone' => $restaurant['phone'],
-            'resto_email' => $restaurant['email']
+            'resto_email' => $restaurant['email'],
+            'employees' => $em_array
         );
         
-        $this->load->view('admin/scheduling/bulk_print',$content_data);
+        $this->load->view('admin/scheduling/bulk_print',$print_data);
     }
 
 
