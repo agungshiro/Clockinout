@@ -543,7 +543,8 @@ class Restaurants extends Admin_Controller {
         $content_data = array(
             'cancel_url'        => $this->_redirect_url,
             'job'              => $job,
-            'id_restaurant'     => $job['id_restaurant']
+            'id_restaurant'     => $job['id_restaurant'],
+            'id_job'            => $id
         );
 
 

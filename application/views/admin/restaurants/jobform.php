@@ -6,6 +6,9 @@
     <?php if (isset($id_restaurant)) : ?>
         <?php echo form_hidden('id_restaurant', $id_restaurant); ?>
     <?php endif; ?>
+    <?php if (isset($id_job)) : ?>
+        <?php echo form_hidden('id', $id_job); ?>
+    <?php endif; ?>
 
     <div class="row">
         <?php // name ?>
