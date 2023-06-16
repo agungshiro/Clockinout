@@ -4,10 +4,10 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-md-6 text-left">
-                <h3 class="panel-title">List of Restaurants</h3>
+                <h3 class="panel-title">Job List</h3>
             </div>
             <div class="col-md-6 text-right">
-                <a class="btn btn-success tooltips" href="<?php echo base_url('admin/restaurants/add'); ?>" title="Add new restaurants" data-toggle="tooltip"><span class="glyphicon glyphicon-plus-sign"></span> Add new restaurant</a>
+                <a class="btn btn-success tooltips" href="<?php echo base_url('admin/restaurants/add_job/'.$id_restaurant); ?>" title="Add new job" data-toggle="tooltip"><span class="glyphicon glyphicon-plus-sign"></span> Add new job</a>
             </div>
         </div>
     </div>
@@ -26,8 +26,10 @@
                     <?php if ($sort == 'name') : ?><span class="glyphicon glyphicon-arrow-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
                 </td>
                 <td>
-                    <a href="<?php echo current_url(); ?>?sort=is_active&dir=<?php echo (($dir == 'asc' ) ? 'desc' : 'asc'); ?>&limit=<?php echo $limit; ?>&offset=<?php echo $offset; ?><?php echo $filter; ?>">Status</a>
-                    <?php if ($sort == 'is_active') : ?><span class="glyphicon glyphicon-arrow-<?php echo (($dir == 'asc') ? 'up' : 'down'); ?>"></span><?php endif; ?>
+                    Hour Limit
+                </td>
+                <td>
+                    Shift Limit
                 </td>
                 <td class="pull-right">
                     <?php echo lang('admin col actions'); ?>
@@ -56,24 +58,25 @@
 
             <?php // data rows ?>
             <?php if ($total) : ?>
-                <?php foreach ($restaurants as $restaurant) : ?>
+                <?php foreach ($joblist as $jlist) : ?>
                     <tr>
                         <td<?php echo (($sort == 'id') ? ' class="sorted"' : ''); ?>>
-                            <?php echo $restaurant['id']; ?>
+                            <?php echo $jlist['id']; ?>
                         </td>
                         <td<?php echo (($sort == 'name') ? ' class="sorted"' : ''); ?>>
-                            <?php echo $restaurant['name']; ?>
+                            <?php echo $jlist['name']; ?>
                         </td>
-                        <td<?php echo (($sort == 'is_active') ? ' class="sorted"' : ''); ?>>
-                            <?php echo ($restaurant['is_active']) ? '<span class="active">' . lang('admin input active') . '</span>' : '<span class="inactive">' . lang('admin input inactive') . '</span>'; ?>
+                        <td>
+                            <?php echo ($jlist['time_limit']); ?>
+                        </td>
+                        <td>
+                            <?php echo ($jlist['shift_limit']); ?>
                         </td>
                         <td>
                             <div class="text-right">
                                 <div class="btn-group">
-                                    <a href="#modal-<?php echo $restaurant['id']; ?>" data-toggle="modal" class="btn btn-danger btn-xs" title="<?php echo lang('admin button delete'); ?>"><span class="glyphicon glyphicon-trash"></span></a>
-                                    <a href="<?php echo $this_url; ?>/edit/<?php echo $restaurant['id']; ?>" class="btn btn-warning btn-xs" title="<?php echo lang('admin button edit'); ?>"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <a href="employee/by_restaurant/<?php echo $restaurant['id']; ?>" class="btn btn-info btn-xs" title="Employees"><span class="glyphicon glyphicon-user"></span></a>
-                                    <a href="restaurants/joblist/<?php echo $restaurant['id']; ?>" class="btn btn-success btn-xs" title="Kob List"><span class="glyphicon glyphicon-tasks"></span></a>
+                                    <a href="#modal-<?php echo $jlist['id']; ?>" data-toggle="modal" class="btn btn-danger btn-xs" title="<?php echo lang('admin button delete'); ?>"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a href="<?php echo $this_url; ?>/edit_job/<?php echo $jlist['id']; ?>" class="btn btn-warning btn-xs" title="<?php echo lang('admin button edit'); ?>"><span class="glyphicon glyphicon-pencil"></span></a>
                                 </div>
                             </div>
                         </td>
@@ -122,20 +125,20 @@
 
 <?php // delete modal ?>
 <?php if ($total) : ?>
-    <?php foreach ($restaurants as $restaurant) : ?>
-        <div class="modal fade" id="modal-<?php echo $restaurant['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-label-<?php echo $restaurant['id']; ?>" aria-hidden="true">
+    <?php foreach ($joblist as $jlist) : ?>
+        <div class="modal fade" id="modal-<?php echo $jlist['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="modal-label-<?php echo $jlist['id']; ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h4 id="modal-label-<?php echo $restaurant['id']; ?>"><?php echo lang('restaurants title restaurant_delete');  ?></h4>
+                        <h4 id="modal-label-<?php echo $jlist['id']; ?>"><?php echo lang('restaurants title restaurant_delete');  ?></h4>
                     </div>
                     <div class="modal-body">
-                        <p><?php echo sprintf(lang('restaurants msg delete_confirm'), $restaurant['name']); ?></p>
+                        <p><?php echo sprintf(lang('restaurants msg delete_confirm'), $jlist['name']); ?></p>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('core button cancel'); ?></button>
-                        <button type="button" class="btn btn-primary btn-delete-user" data-id="<?php echo $restaurant['id']; ?>"><?php echo lang('admin button delete'); ?></button>
+                        <button type="button" class="btn btn-primary btn-delete-user" data-id="<?php echo $jlist['id']; ?>"><?php echo lang('admin button delete'); ?></button>
                     </div>
                 </div>
             </div>

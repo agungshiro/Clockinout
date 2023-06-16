@@ -1,0 +1,47 @@
+ERROR - 2023-06-16 00:43:05 --> Severity: Warning --> Invalid argument supplied for foreach() /Applications/MAMP/htdocs/Clockinout/application/views/admin/restaurants/joblist.php 59
+ERROR - 2023-06-16 00:43:05 --> Severity: Warning --> Invalid argument supplied for foreach() /Applications/MAMP/htdocs/Clockinout/application/views/admin/restaurants/joblist.php 123
+ERROR - 2023-06-16 02:07:12 --> Severity: error --> Exception: Call to undefined method Restaurants_model::get() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 362
+ERROR - 2023-06-16 04:22:24 --> Severity: error --> Exception: Too few arguments to function Restaurants::add_job(), 0 passed in /Applications/MAMP/htdocs/Clockinout/system/core/CodeIgniter.php on line 532 and exactly 1 expected /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 447
+ERROR - 2023-06-16 04:24:42 --> Severity: error --> Exception: Too few arguments to function Restaurants::add_job(), 0 passed in /Applications/MAMP/htdocs/Clockinout/system/core/CodeIgniter.php on line 532 and exactly 1 expected /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 448
+ERROR - 2023-06-16 04:24:48 --> Severity: error --> Exception: Too few arguments to function Restaurants::add_job(), 0 passed in /Applications/MAMP/htdocs/Clockinout/system/core/CodeIgniter.php on line 532 and exactly 1 expected /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 448
+ERROR - 2023-06-16 04:24:54 --> Severity: error --> Exception: Too few arguments to function Restaurants::add_job(), 0 passed in /Applications/MAMP/htdocs/Clockinout/system/core/CodeIgniter.php on line 532 and exactly 1 expected /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 448
+ERROR - 2023-06-16 04:29:49 --> Severity: error --> Exception: Too few arguments to function Restaurants::add_job(), 0 passed in /Applications/MAMP/htdocs/Clockinout/system/core/CodeIgniter.php on line 532 and exactly 1 expected /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 448
+ERROR - 2023-06-16 04:30:22 --> Could not find the language line "restaurants title user_add"
+ERROR - 2023-06-16 04:30:46 --> Severity: error --> Exception: Call to undefined method Joblist_model::job_exists() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 633
+ERROR - 2023-06-16 04:32:05 --> Severity: error --> Exception: Call to undefined method Joblist_model::job_exists() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 633
+ERROR - 2023-06-16 04:32:22 --> Severity: error --> Exception: Call to undefined method Joblist_model::job_exists() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 633
+ERROR - 2023-06-16 04:42:19 --> Query error: Column 'id_restaurant' cannot be null - Invalid query: 
+                INSERT INTO typeofjobs (
+                    name,
+                    time_limit,
+                    shift_limit,
+                    id_restaurant
+                ) VALUES (
+                    'Testaja',
+                    '45',
+                    '5.5',
+                    NULL
+                )
+            
+ERROR - 2023-06-16 05:01:30 --> Query error: Column 'id_restaurant' cannot be null - Invalid query: 
+                INSERT INTO typeofjobs (
+                    name,
+                    time_limit,
+                    shift_limit,
+                    id_restaurant
+                ) VALUES (
+                    'Testaja',
+                    '45',
+                    '5.5',
+                    NULL
+                )
+            
+ERROR - 2023-06-16 05:31:10 --> Severity: error --> Exception: Call to a member function get() on null /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 501
+ERROR - 2023-06-16 05:32:02 --> Severity: error --> Exception: Call to a member function get() on null /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 501
+ERROR - 2023-06-16 05:33:25 --> Severity: error --> Exception: Call to undefined method Joblist_model::edit_restaurant() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 520
+ERROR - 2023-06-16 05:33:52 --> Severity: error --> Exception: Call to undefined method Joblist_model::edit_restaurant() /Applications/MAMP/htdocs/Clockinout/application/controllers/admin/Restaurants.php 520
+ERROR - 2023-06-16 05:35:08 --> Query error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = '24'' at line 3 - Invalid query: 
+                DELETE typeofjobs 
+
+                WHERE id = '24'
+            

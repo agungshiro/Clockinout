@@ -356,6 +356,237 @@ class Restaurants extends Admin_Controller {
         exit;
     }
 
+    function joblist($id = NULL) {
+        $this->load->model('joblist_model');
+
+        $restaurant = $this->restaurants_model->get_restaurant($id);
+
+         // get parameters
+         $limit  = $this->input->get('limit')  ? $this->input->get('limit', TRUE)  : DEFAULT_LIMIT;
+         $offset = $this->input->get('offset') ? $this->input->get('offset', TRUE) : DEFAULT_OFFSET;
+         $sort   = $this->input->get('sort')   ? $this->input->get('sort', TRUE)   : DEFAULT_SORT;
+         $dir    = $this->input->get('dir')    ? $this->input->get('dir', TRUE)    : DEFAULT_DIR;
+ 
+         // get filters
+         $filters = array();
+ 
+         if ($this->input->get('name'))
+         {
+             $filters['name'] = $this->input->get('name', TRUE);
+         }
+ 
+         // build filter string
+         $filter = "";
+         foreach ($filters as $key => $value)
+         {
+             $filter .= "&{$key}={$value}";
+         }
+ 
+         // save the current url to session for returning
+         $this->session->set_userdata(REFERRER, THIS_URL . "?sort={$sort}&dir={$dir}&limit={$limit}&offset={$offset}{$filter}");
+ 
+         // are filters being submitted?
+         if ($this->input->post())
+         {
+             if ($this->input->post('clear'))
+             {
+                 // reset button clicked
+                 redirect(THIS_URL);
+             }
+             else
+             {
+                 // apply the filter(s)
+                 $filter = "";
+ 
+                 if ($this->input->post('name'))
+                 {
+                     $filter .= "&name=" . $this->input->post('name', TRUE);
+                 }
+ 
+                 // redirect using new filter(s)
+                 redirect(THIS_URL . "?sort={$sort}&dir={$dir}&limit={$limit}&offset={$offset}{$filter}");
+             }
+         }
+ 
+         // get list
+         $joblist = $this->joblist_model->get_all($id,$limit, $offset, $filters, $sort, $dir);
+ 
+         // build pagination
+         $this->pagination->initialize(array(
+             'base_url'   => THIS_URL . "?sort={$sort}&dir={$dir}&limit={$limit}{$filter}",
+             'total_rows' => $joblist['total'],
+             'per_page'   => $limit
+         ));
+ 
+         // setup page header data
+         $this
+             ->add_js_theme('joblist.js', TRUE )
+             ->set_title($restaurant['name']."'s Job List");
+ 
+         $data = $this->includes;
+ 
+         // set content data
+         $content_data = array(
+             'this_url'   => THIS_URL,
+             'joblist'    => $joblist['results'],
+             'total'      => $joblist['total'],
+             'filters'    => $filters,
+             'filter'     => $filter,
+             'pagination' => $this->pagination->create_links(),
+             'limit'      => $limit,
+             'offset'     => $offset,
+             'sort'       => $sort,
+             'dir'        => $dir,
+             'id_restaurant' => $restaurant['id']
+         );
+ 
+         // load views
+         $data['content'] = $this->load->view('admin/restaurants/joblist', $content_data, TRUE);
+         $this->load->view($this->template, $data);
+    }
+
+    function add_job($id_restaurant) {
+        $this->load->model('joblist_model');
+        // validators
+        $this->form_validation->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'));
+        $this->form_validation->set_rules('name', 'Name', 'required|trim|min_length[5]|max_length[100]|callback__check_jobname[]');
+        $this->form_validation->set_rules('time_limit', 'Hour Limit', 'required|numeric');
+        $this->form_validation->set_rules('shift_limit', 'Shift Limit', 'required|numeric');
+        $this->form_validation->set_rules('id_restaurant', 'ID Restaurant', 'required|numeric');
+
+        if ($this->form_validation->run() == TRUE)
+        {
+            // save the new user
+            $saved = $this->joblist_model->add($this->input->post());
+
+            if ($saved)
+            {
+                $this->session->set_flashdata('message', sprintf('A new job successfully added : '.$this->input->post('name')));
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Adding new job failed');
+            }
+
+            // return to list and display message
+            redirect($this->_redirect_url);
+        }
+
+        // setup page header data
+        $this
+            ->set_title('Add Job');
+
+        
+        // set content data
+        $content_data = array(
+            'cancel_url'        => $this->_redirect_url,
+            'id_restaurant'        => $id_restaurant
+        );
+
+        $data = $this->includes;
+
+
+        $data['content'] = $this->load->view('admin/restaurants/jobform', $content_data, TRUE);
+        $this->load->view($this->template, $data);
+    } 
+
+    function edit_job($id) {
+        $this->load->model('joblist_model');
+
+        // make sure we have a numeric id
+        if (is_null($id) OR ! is_numeric($id))
+        {
+            redirect($this->_redirect_url);
+        }
+
+        // get the data
+        $job = $this->joblist_model->get($id);
+
+        // if empty results, return to list
+        if ( ! $job)
+        {
+            redirect($this->_redirect_url);
+        }
+
+        // validators
+        $this->form_validation->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'));
+        $this->form_validation->set_rules('name', 'Name', 'required|trim|min_length[5]|max_length[100]|callback__check_jobname['.$job['name'].']');
+        $this->form_validation->set_rules('time_limit', 'Hour Limit', 'required|numeric');
+        $this->form_validation->set_rules('shift_limit', 'Shift Limit', 'required|numeric');
+        $this->form_validation->set_rules('id_restaurant', 'ID Restaurant', 'required|numeric');
+
+        if ($this->form_validation->run() == TRUE)
+        {
+            // save the changes
+            $saved = $this->joblist_model->edit($this->input->post());
+
+            if ($saved)
+            {
+                $this->session->set_flashdata('message', 'Successfully editing job '.$this->input->post('name'));
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'Error editing job '.$job['name']);
+            }
+
+            // return to list and display message
+            redirect($this->_redirect_url);
+        }
+
+        // setup page header data
+        $this
+            ->set_title('Editing job');
+
+        $data = $this->includes;
+
+        // set content data
+        $content_data = array(
+            'cancel_url'        => $this->_redirect_url,
+            'job'              => $job,
+            'id_restaurant'     => $job['id_restaurant']
+        );
+
+
+        $data['content'] = $this->load->view('admin/restaurants/jobform', $content_data, TRUE);
+         $this->load->view($this->template, $data);
+    }
+
+    function delete_job($id) {
+        $this->load->model('joblist_model');
+        // make sure we have a numeric id
+        if ( ! is_null($id) OR ! is_numeric($id))
+        {
+            // get user details
+            $job = $this->joblist_model->get($id);
+
+            if ($job)
+            {
+                // soft-delete the user
+                $delete = $this->joblist_model->delete($id);
+
+                if ($delete)
+                {
+                    $this->session->set_flashdata('message', $job['name'].' successfully deleted' );
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Fail to delete '.$job['name']);
+                }
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'This Job is not exist');
+            }
+        }
+        else
+        {
+            $this->session->set_flashdata('error', "Job's id is required");
+        }
+
+        // return to list and display message
+        redirect($this->_redirect_url);
+    }
+
 
     /**************************************************************************************
      * PRIVATE VALIDATION CALLBACK FUNCTIONS
@@ -400,6 +631,20 @@ class Restaurants extends Admin_Controller {
         else
         {
             return $email;
+        }
+    }
+
+    function _check_jobname($name, $current)
+    {
+        $this->load->model('joblist_model');
+        if (trim($name) != trim($current) && $this->joblist_model->job_exists($name))
+        {
+            $this->form_validation->set_message('_check_jobname', sprintf('Job exist : '.$name));
+            return FALSE;
+        }
+        else
+        {
+            return $name;
         }
     }
 
