@@ -137,15 +137,18 @@ class Import  extends Admin_Controller {
 					fclose($handle);
 
 				} else {
-					echo 'Format file tidak valid!';
+                    $this->session->set_flashdata('error', 'Please select CSV file');
+                    redirect(base_url('admin/import/'));
 				}
 
 
             }else{
-                print('not uploaded');
+                $this->session->set_flashdata('error', 'Please select CSV file');
+                redirect(base_url('admin/import/'));
             }
         }else{
-            print('not valid');
+            $this->session->set_flashdata('error', 'Please select CSV file');
+            redirect(base_url('admin/import/'));
         }
         //redirect('members');
 
