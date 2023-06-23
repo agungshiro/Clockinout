@@ -601,6 +601,13 @@ class Scheduling extends Admin_Controller {
         $start_period = $this->input->post('start_period');
         $end_period = $this->input->post('end_period');
 
+        if($start_period == '' || $end_period == '') {
+            $this->session->set_flashdata('error', 'Please set the start and end of periode first');
+            $this->load->library('user_agent');
+            //redirect($this->_redirect_url);
+            redirect($this->agent->referrer());
+        };
+
         // Get Time interval based on start and end period
         $begin = new DateTime($start_period.' 00:00:00');
         $end = new DateTime($end_period.' 00:00:00');
@@ -645,7 +652,8 @@ class Scheduling extends Admin_Controller {
         // Get All Employees in a restaurant
         $employees = $this->employee_model->get_all_by_restaurant($id_resto);
 
-        if(!$employees['result']) {
+        
+        if($employees['results'] == NULL) {
             $this->session->set_flashdata('error', 'No data available');
             $this->load->library('user_agent');
             //redirect($this->_redirect_url);
@@ -686,6 +694,13 @@ class Scheduling extends Admin_Controller {
                 $mydayoffs = $this->scheduling_model->get_day_off_print($d_o['id_period']);
                 // Get period information to achieve total hours of the periods
                 $myperiods = $this->scheduling_model->get_period($d_o['id_period']);
+
+                if($mydayoffs == NULL) {
+                    $this->session->set_flashdata('error', 'No data available');
+                    $this->load->library('user_agent');
+                    //redirect($this->_redirect_url);
+                    redirect($this->agent->referrer());
+                };
 
                 // Total counting
                 // Calculate the true hours based of shift duration in seconds
