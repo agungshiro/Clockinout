@@ -645,6 +645,13 @@ class Scheduling extends Admin_Controller {
         // Get All Employees in a restaurant
         $employees = $this->employee_model->get_all_by_restaurant($id_resto);
 
+        if(!$employees['result']) {
+            $this->session->set_flashdata('error', 'No data available');
+            $this->load->library('user_agent');
+            //redirect($this->_redirect_url);
+            redirect($this->agent->referrer());
+        };
+    
         // Iterate to each employee in a restaurant
         $index = 0;
         // Array to keep the final data
