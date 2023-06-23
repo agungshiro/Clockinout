@@ -601,8 +601,8 @@ class Scheduling extends Admin_Controller {
         $start_period = $this->input->post('start_period');
         $end_period = $this->input->post('end_period');
 
-        if($start_period == '' || $end_period == '') {
-            $this->session->set_flashdata('error', 'Please set the start and end of periode first');
+        if($start_period == '' || $end_period == '' || $start_period > $end_period) {
+            $this->session->set_flashdata('error', 'Please set a valid the start and end of periode date');
             $this->load->library('user_agent');
             //redirect($this->_redirect_url);
             redirect($this->agent->referrer());

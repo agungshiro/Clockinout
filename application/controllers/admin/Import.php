@@ -173,8 +173,9 @@ class Import  extends Admin_Controller {
         //$len = count($this->input->post('name'));
         //print_r($len);
 
-        if($this->input->post('start_period') == '' || $this->input->post('end_period') == '') {
-            $this->session->set_flashdata('error', 'Please set the start and end of periode first');
+        if($this->input->post('start_period') == '' || $this->input->post('end_period') == '' || 
+        $this->input->post('start_period') > $this->input->post('end_period')) {
+            $this->session->set_flashdata('error', 'Please set a valid start and end of periode date');
             
             //redirect($this->_redirect_url);
             redirect(base_url('admin/import/'));
