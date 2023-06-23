@@ -91,21 +91,25 @@ class Import_model extends CI_Model {
         $ids = array();
         if ($data)
         {
-            $sql = "
-                INSERT INTO {$this->_e_db} (
-                    name,
-                    id_restourant,
-                    jobtype
-                ) VALUES (
-                    " . $this->db->escape($data['name']) . ",
-                    " . $this->db->escape($data['id_restourant']) . ",
-                    " . $this->db->escape($data['id_tob']) . "
-                )
-            ";
+            if (!$ids['id_employee'] = $this->check_name_exists($data['name'])) {
+            
+                $sql = "
+                    INSERT INTO {$this->_e_db} (
+                        name,
+                        id_restourant,
+                        jobtype
+                    ) VALUES (
+                        " . $this->db->escape($data['name']) . ",
+                        " . $this->db->escape($data['id_restourant']) . ",
+                        " . $this->db->escape($data['id_tob']) . "
+                    )
+                ";
 
-            $this->db->query($sql);
+                $this->db->query($sql);
 
-            $ids['id_employee'] = $this->db->insert_id();
+                $ids['id_employee'] = $this->db->insert_id();
+
+            }
 
             $sql2 = "
                 INSERT INTO {$this->_p_db} (
@@ -153,6 +157,23 @@ class Import_model extends CI_Model {
             ";
 
             $this->db->query($sql);
+    }
+
+    function check_name_exists($name) {
+        $sql = "
+            SELECT * FROM {$this->_e_db} 
+            WHERE name LIKE '%{$name}%' 
+        ";
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows())
+        {
+            $res = $query->row_array();
+            return $res['id'];
+        }
+
+        return FALSE;
     }
 
 }
