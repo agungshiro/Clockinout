@@ -38,6 +38,7 @@ $dt = new DateTime("now", new DateTimeZone('America/New_York'));
 <br>
 <div>-------------- Cut Here ---------------</div>
 <?php chr(29) . chr(86) . chr(48); ?>
+<?php echo(chr(29) . chr(86) . chr(48)); ?>
 <br>
 <br>
 <br>
