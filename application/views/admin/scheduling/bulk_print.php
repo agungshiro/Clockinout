@@ -63,10 +63,10 @@ foreach($employees as $em):
 
         $CI->printerconnector->append_text('---------------------------------------');
         if ($do['type'] == 'off'):
-            $CI->printerconnector->append_text($do['day'].' : '.str_replace('_',' ',$do['type']));
+            $CI->printerconnector->append_text($do['date'].' : '.str_replace('_',' ',$do['type']));
             $CI->printerconnector->append_text('Total Time : '.$do['duration']);
         else:
-            $CI->printerconnector->append_text($do['day'].' : '.str_replace('_',' ',$do['type']));
+            $CI->printerconnector->append_text($do['date'].' : '.str_replace('_',' ',$do['type']));
             $CI->printerconnector->append_text('Clock In : '.$do['clockin']);
             $CI->printerconnector->append_text('Clock Out : '.$do['clockout']);
             $CI->printerconnector->append_text('Duration : '.$do['duration']);
