@@ -35,5 +35,3 @@ $dt = new DateTime("now", new DateTimeZone('America/New_York'));
 <div><?php echo($name); ?></div>
 <br>
 <br>
-<?php chr(29) . chr(86) . chr(48); ?>
-<?php echo(chr(29) . chr(86) . chr(48)); ?>

@@ -37,10 +37,55 @@ $dt = new DateTime("now", new DateTimeZone('America/New_York'));
 <br>
 <br>
 <div>-------------- Cut Here ---------------</div>
-<?php chr(29) . chr(86) . chr(48); ?>
-<?php echo(chr(29) . chr(86) . chr(48)); ?>
 <br>
 <br>
 <br>
 <div><?php echo($name); ?></div>
 <?php endforeach; ?>
+
+<?php
+
+$CI =& get_instance();
+$CI->load->library('Printerconnector');
+$p_name = $CI->config->item('printers_name');
+$CI->printerconnector->set_printers_name($p_name);
+
+foreach($employees as $em):
+    $CI->printerconnector->append_text($resto_name);
+    $CI->printerconnector->append_text($resto_address);
+    $CI->printerconnector->append_text($resto_phone);
+    $CI->printerconnector->append_text($resto_email);
+    $CI->printerconnector->append_text('======================================');
+    
+    $CI->printerconnector->append_text('Name : '.$em['name']);
+
+    foreach($em['dayoffs'] as $k => $do):
+
+        $CI->printerconnector->append_text('---------------------------------------');
+        if ($do['type'] == 'off'):
+            $CI->printerconnector->append_text($do['day'].' : '.str_replace('_',' ',$do['type']));
+            $CI->printerconnector->append_text('Total Time : '.$do['duration']);
+        else:
+            $CI->printerconnector->append_text($do['day'].' : '.str_replace('_',' ',$do['type']));
+            $CI->printerconnector->append_text('Clock In : '.$do['clockin']);
+            $CI->printerconnector->append_text('Clock Out : '.$do['clockout']);
+            $CI->printerconnector->append_text('Duration : '.$do['duration']);
+        endif;
+
+    endforeach;
+
+    $CI->printerconnector->append_text('---------------------------------------');
+    $dt = new DateTime("now", new DateTimeZone('America/New_York'));
+    $CI->printerconnector->append_text('Printed : '.$dt->format('Y-m-d H:i:s'));
+    $CI->printerconnector->append_text('Signed');
+    $CI->printerconnector->append_text('');
+    $CI->printerconnector->append_text('');
+    $CI->printerconnector->append_text($em['name']);
+
+    $CI->printerconnector->print_out();
+
+    $CI->printerconnector->clear_text();
+
+endforeach;
+
+?>

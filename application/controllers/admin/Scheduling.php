@@ -768,7 +768,125 @@ class Scheduling extends Admin_Controller {
         );
         
         $this->load->view('admin/scheduling/bulk_print',$print_data);
+        $this->load->library('user_agent');
+        redirect($this->agent->referrer());
     }
+
+    /**
+    function print_direct($id = null) {
+        $this->load->library('Printerconnector');
+        $p_name = $this->config->item('printers_name');
+
+        $this->printerconnector->set_printers_name($p_name);
+
+        $this->printerconnector->print_out();
+        
+        
+    }
+    */
+
+    function print_direct($id = null) {
+        // Get necessary data from database
+        $period = $this->scheduling_model->get_period($id);
+        $dayoffs = $this->scheduling_model->get_day_off_print($id);
+        $employee = $this->employee_model->get_employee($period['id_employee']);
+        $restaurant = $this->restaurants_model->get_restaurant($employee['id_restourant']);
+
+        // Get time parameter from database and convert to seconds
+        $open = strtotime($restaurant['open_hour']);
+        $close = strtotime($restaurant['close_hour']);
+        $shift = strtotime($restaurant['shift_hour']);
+
+        // Total working our of the employee, from the database
+        $employee_hours = $period['total_hours']*3600;
+        $base_add_time = 5 * 60; // Base 5 minute early 
+                     
+        // Everything in second           
+        $max = $close - $open;
+        $shift1 = $shift - $open;
+        $shift2 = $close - $shift;
+        $max_week = $max * 7;
+
+        $mod = NULL;
+        $numb_days = count($dayoffs);
+        $all_base_add_time = $base_add_time * $numb_days * 2;
+        $max_week = $max * $numb_days;
+        $total = 0;
+
+        // Total counting
+        foreach($dayoffs as $key => $val) {
+            foreach($val as $k=>$v){
+                if($v == 'full_day') {$total += $max;}
+                elseif($v == '1st_shift') {$total += $shift1;}
+                elseif($v == '2nd_shift') {$total += $shift2;}
+                else{$total += 0;}
+            }
+        }
+
+        // Find diff
+        $diff = $employee_hours - $total; 
+        $allow_rand = $diff - $all_base_add_time;
+        $diff_rate = $allow_rand/($numb_days*2);
+
+        $i = 0;
+        foreach($dayoffs as $dof) {
+            $mod[$i] = $dof;
+
+            $rand1 = rand(0,$diff_rate);
+
+            // Clock in
+            if($dof['type'] == 'full_day' || $dof['type'] == '1st_shift') {
+                $clockin = strtotime($restaurant['open_hour']) - ($base_add_time + $rand1);
+            } elseif ($dof['type'] == '2nd_shift') {
+                $clockin = strtotime($restaurant['shift_hour']) - ($base_add_time + $rand1);
+            } else {
+                $clockin = 0;
+            }
+
+            $allow_rand = $allow_rand - $rand1;
+
+            $rand2 = rand(0,$diff_rate);
+            
+            // Clock out
+            if($dof['type'] == 'full_day' || $dof['type'] == '2nd_shift') {
+                $clockout = strtotime($restaurant['close_hour']) + $base_add_time + $rand2;
+            } elseif ($dof['type'] == '1st_shift') {
+                $clockout = strtotime($restaurant['shift_hour']) + $base_add_time + $rand2;
+            } else {
+                $clockout = 0;
+            }
+
+            $allow_rand = $allow_rand - $rand2;
+
+            $duration = $clockout - $clockin;
+            $h = floor($duration/3600);
+            $min = floor(($duration%3600)/60);
+            $sec = floor(($duration%3600)%60);
+            $mod[$i]['clockin'] = date('H:i:s',$clockin);
+            $mod[$i]['clockout'] = date('H:i:s',$clockout);
+            $mod[$i]['duration'] = $h.' h : '.$min.' m : '.$sec.' s';
+            $i++;
+        }
+
+        $content_data = array(
+            'resto_name' => $restaurant['name'],
+            'resto_address' => $restaurant['address'],
+            'resto_phone' => $restaurant['phone'],
+            'resto_email' => $restaurant['email'],
+            'open_hour' => $restaurant['open_hour'],
+            'close_hour' => $restaurant['close_hour'],
+            'shift_hour' => $restaurant['shift_hour'],
+            'name' => $employee['name'],
+            'dayoffs' =>$mod
+        );
+
+
+        $this->load->view('admin/scheduling/printer_direct',$content_data);
+
+        $this->load->library('user_agent');
+        redirect($this->agent->referrer());
+    }
+
 
 
     /**************************************************************************************

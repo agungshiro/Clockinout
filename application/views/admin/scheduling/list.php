@@ -75,6 +75,7 @@
                                     <?php if($schedule['day']): ?>
                                         <a href="#" class="btn btn-secondary btn-xs" title="<?php echo lang('admin button edit'); ?>" disabled><span class="glyphicon glyphicon-list-alt"></span></a>
                                         <a href="<?php echo $this_url; ?>/print/<?php echo $schedule['id']; ?>" target="_blank" class="btn btn-success btn-xs" title="<?php echo('Print'); ?>"><span class="glyphicon glyphicon-print"></span></a>
+                                        <a href="<?php echo $this_url; ?>/print_direct/<?php echo $schedule['id']; ?>" class="btn btn-warning btn-xs" title="<?php echo('Print'); ?>"><span class="glyphicon glyphicon-print"></span></a>
                                     <?php else: ?>
                                         <a href="<?php echo $this_url; ?>/add_day_off/<?php echo $schedule['id']; ?>" class="btn btn-info btn-xs" title="<?php echo lang('admin button edit'); ?>" aria-disabled = "true" role="link"><span class="glyphicon glyphicon-list-alt"></span></a>
                                         <a href="#" class="btn btn-secondary btn-xs" title="<?php echo('Print'); ?>" disabled><span class="glyphicon glyphicon-print"></span></a>

@@ -24,3 +24,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'http://localhost:8888/Clockinout';
+$config['printers_name'] = 'HaoYin_CX58D';
